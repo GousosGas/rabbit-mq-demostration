@@ -9,18 +9,16 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-
 @Service
-public class EmployConsumer {
+public class AccountingConsumer {
     private ObjectMapper objectMapper = new ObjectMapper();
+    private static final Logger log = LoggerFactory.getLogger(AccountingConsumer.class);
 
-    private static final Logger log
-            = LoggerFactory.getLogger(EmployConsumer.class);
-
-    @RabbitListener(queues = "course.employee")
+    @RabbitListener(queues = "q.hr.accounting")
     public void listen(String message){
+        Employee emp = null;
         try {
-            var emp = objectMapper.readValue(message, Employee.class);
+            emp = objectMapper.readValue(message, Employee.class);
             log.info("Employee is {} ",emp);
         } catch (IOException e) {
             e.printStackTrace();
