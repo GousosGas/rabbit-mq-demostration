@@ -5,6 +5,7 @@ import com.course.rabbitproducer.entity.Picture;
 import com.course.rabbitproducer.producer.EmployeeProducer;
 import com.course.rabbitproducer.producer.HumanResoourcesProducer;
 import com.course.rabbitproducer.producer.PictureProducer;
+import com.course.rabbitproducer.producer.PictureProducerTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +20,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RabbitProducerApplication implements CommandLineRunner {
 
     @Autowired
-    private PictureProducer pictureProducer;
+    private PictureProducerTopic pictureProducer;
 
     private final List<String> source = List.of("mobile","web");
     private final List<String> types = List.of("jpeg","png","svg");
